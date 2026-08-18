@@ -29,3 +29,10 @@ Copier le dossier d'un skill dans `~/.claude/skills/<nom>/` (skills perso) ou
 `.claude/skills/<nom>/` à la racine d'un projet (skills scopés au repo), puis
 l'invoquer avec `/<nom>` dans Claude Code — voir la
 [doc officielle des Agent Skills](https://docs.claude.com/en/docs/claude-code/skills).
+
+## Voir aussi
+
+[`site-audit-skill`](https://github.com/Tangoal/site-audit-skill) — un skill
+séparé, pas ici, car il dépend d'outils tiers (testssl.sh, Lighthouse) qu'il
+installe à la demande plutôt que d'être un simple fichier d'instructions.
+Distribué en plugin (`/plugin marketplace add`) plutôt qu'en copier-coller.
