@@ -1,6 +1,6 @@
 # claude-skills
 
-Une sélection de **Skills** et de **Commands** que j'ai écrites pour
+Une sélection de **Skills** et de **Commands** pour
 [Claude Code](https://claude.com/product/claude-code), l'agent CLI
 d'Anthropic. Deux mécanismes différents :
 
