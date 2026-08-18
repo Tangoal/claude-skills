@@ -56,3 +56,7 @@ Dans les deux cas, s'invoque ensuite avec `/<nom>` dans Claude Code.
 séparé, pas ici, car il dépend d'outils tiers (testssl.sh, Lighthouse) qu'il
 installe à la demande plutôt que d'être un simple fichier d'instructions.
 Distribué en plugin (`/plugin marketplace add`) plutôt qu'en copier-coller.
+
+## Licence
+
+MIT — voir [`LICENSE`](./LICENSE).
