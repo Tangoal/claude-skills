@@ -1,4 +1,5 @@
 ---
+name: talk
 description: Mode discussion pure — aucune modification, juste parler du sujet en cours
 ---
 
