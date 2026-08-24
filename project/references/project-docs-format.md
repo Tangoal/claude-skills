@@ -262,3 +262,39 @@ Only create this when the session/project has an actual visual identity to
 capture (colors, typography already chosen or being decided) — don't
 fabricate tokens to fill the template. If the project has no UI, skip this
 file entirely rather than writing a boilerplate placeholder.
+
+## TESTS.md — test strategy, for projects with a real test suite only
+
+Lives at `{project}/docs/TESTS.md`. Unlike `DESIGN.md`, there's no
+structural trigger for this one (no "UI-facing" equivalent) — it's a
+judgment call per project, and `/project status`/`audit` never flag it as
+missing even for a project with a large test suite on disk.
+
+Not a list of test files — that's derivable straight from the code
+(`find`, `npm test`, `pytest --collect-only`) and would just rot out of
+sync. Only write it when there's something a reader can't get from the
+test files themselves:
+
+```markdown
+# Tests — {Project Name}
+
+## Stratégie
+{unit vs intégration vs e2e — qui couvre quoi, et pourquoi ce découpage}
+
+## Hors périmètre
+{ce qui n'est volontairement pas testé, et pourquoi}
+
+## Lancer les tests
+{commande(s), y compris variantes (watch, coverage, un seul fichier)}
+
+## Dépendances externes
+{ce qui est mocké vs appelé en vrai (API tierce, DB, queue...) et pourquoi}
+```
+
+Create it only when a project has a non-trivial test suite *and* there's
+a real decision or constraint worth explaining (why some paths are
+untested, what's mocked and why, a non-obvious way to run a subset).
+Never scaffolded by `/project new` — a test strategy doesn't exist yet at
+project creation. If a project's tests are just scaffold boilerplate
+(default CRA/Expo snapshot tests, an empty `tests/` folder), skip this
+file rather than writing a placeholder.

@@ -6,7 +6,8 @@ description: Gestion du cycle de vie et du suivi des tâches des projets (wiki g
 # /project — Cycle de vie et suivi des projets
 
 Un seul point d'entrée pour tout ce qui touche à la doc d'un projet
-(`docs/BRIEF.md`, `docs/ROADMAP.md`, `docs/DESIGN.md` si UI, `AGENTS.md` +
+(`docs/BRIEF.md`, `docs/ROADMAP.md`, `docs/DESIGN.md` si UI, `docs/TESTS.md`
+si le projet a une vraie suite de tests à documenter, `AGENTS.md` +
 stub `CLAUDE.md` à la racine du projet — voir
 `references/project-docs-format.md`), et au wiki global qui les agrège
 (le dossier `docs/` à la racine du wiki). `docs/GOAL.md` peut aussi exister dans un projet mais
@@ -48,7 +49,7 @@ tout le projet.
 
 ### `/project` ou `/project status [nom]`
 
-Sans argument : affiche l'état de la documentation de tous les projets détectés (voir `## Emplacements`) — quels fichiers (`BRIEF.md`, `ROADMAP.md`, `AGENTS.md`, `DESIGN.md` si applicable) sont présents ou manquants, résumé des tâches en cours/bloquées de chaque roadmap. Un `DESIGN.md` manquant n'est signalé comme manquant que pour un projet identifié comme UI-facing, pas systématiquement. `GOAL.md` s'affiche s'il est présent (avec son statut) mais **n'est jamais listé comme manquant** — il est ponctuel/optionnel par nature, produit par le skill `define-goal` (pas par `/project`), pas un fichier attendu par défaut comme les trois autres.
+Sans argument : affiche l'état de la documentation de tous les projets détectés (voir `## Emplacements`) — quels fichiers (`BRIEF.md`, `ROADMAP.md`, `AGENTS.md`, `DESIGN.md` si applicable) sont présents ou manquants, résumé des tâches en cours/bloquées de chaque roadmap. Un `DESIGN.md` manquant n'est signalé comme manquant que pour un projet identifié comme UI-facing, pas systématiquement. `TESTS.md` s'affiche s'il est présent mais, comme `GOAL.md`, **n'est jamais listé comme manquant** — même pour un projet avec une grosse suite de tests détectée : c'est un jugement au cas par cas (stratégie non triviale à documenter ou non), pas un fichier attendu par défaut. `GOAL.md` s'affiche s'il est présent (avec son statut) mais **n'est jamais listé comme manquant** — il est ponctuel/optionnel par nature, produit par le skill `define-goal` (pas par `/project`), pas un fichier attendu par défaut comme les trois autres.
 
 Avec un nom de projet : même résumé mais restreint à ce seul projet (fichiers présents/manquants, état de sa roadmap).
 
@@ -93,7 +94,7 @@ Sans argument : vérifie la cohérence du wiki sur tous les projets — fichiers
 
 Pour chaque fichier non conforme détecté, propose la normalisation (traduire les statuts, ajouter les colonnes manquantes vides, sans jamais supprimer ou réinventer le contenu existant des colonnes déjà là) et applique-la seulement après validation.
 
-Si un projet est identifié comme UI-facing mais que son `DESIGN.md` est absent, le signaler explicitement dans le rapport — même logique de détection que pour `/project status`.
+Si un projet est identifié comme UI-facing mais que son `DESIGN.md` est absent, le signaler explicitement dans le rapport — même logique de détection que pour `/project status`. `TESTS.md` n'a pas d'équivalent de cette règle : jamais signalé comme manquant, même pour un projet avec une grosse suite de tests détectée — voir `/project status` ci-dessus.
 
 **Ne normalise pas aveuglément un fichier qui n'a manifestement pas cette forme de table** (ex: un `ROADMAP.md` en sections de titres au lieu d'un tableau plutôt que le format canonique) — signale-le comme hors-schéma plutôt que de forcer une conversion qui perdrait de l'information ou n'aurait pas de sens.
 
